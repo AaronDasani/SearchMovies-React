@@ -1,33 +1,280 @@
-.App {
+body{
+  background-image: url('./images/backgoundOfMovies.jpg');
+  background-size: cover;
+
+  
+}
+.pt-perspective {
+	width: 100%;
+	min-height: 100%;
+	perspective: 12px;
+  transform-style: preserve-3d;
+  background-color: rgba(8, 8, 8, 0.726);
+  border: 1px #0e0c0c solid;
+}
+
+.pt-page {
+	width: 100%;
+	min-height: 100vh;
+  transform: translate3d(0, 0, 0);
+  
+}
+.pt-page-1 h1{
+
+  color: rgb(255, 88, 88);
   text-align: center;
+  font-size: 50px;
+}
+.pt-page-1 h1 span{
+  color: rgba(175, 175, 175, 0.678);
+}
+.pt-page-1>div{
+  position: relative;
+  top: 30%;
+}
+.pt-page-2 img{
+  vertical-align: top;
+  margin-right: 20px;
+  width: 300px;
+}
+.pt-page-2 h1{
+  display: inline-block;
+  margin-right: 10px;
+}
+.pt-page-2 small{
+  display: inline-block;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.pt-page-2{
+  display: none;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.562);
+  padding: 30px;
   color: white;
 }
+.pt-page-2 img{
+  border-radius: 10px;
+}
+.closeBtn {
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-left: 40%;
+  background-color: rgba(224, 224, 224, 0.87);
 
-.App-link {
-  color: #61dafb;
+}
+.closeBtn i{
+  font-size: 20px;
+}
+@keyframes CloseBtnAnim{
+  0%{transform: scale(1)}50%{transform: scale(1.1)}100%{transform: scale(1)}
+}
+.closeBtn:hover{
+  animation-name: CloseBtnAnim;
+  transition-duration: 0.6s;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  cursor: pointer;
+  background-color: rgb(240, 58, 58);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* make page 2 appear and it get Move up by the adsence of the above div */
+.moveUpEffect{
+  position: absolute; 
+  top: 0;
+  left: 0; 
+  display: block;
+  z-index: 1;
+}
+
+body {
+  overflow: auto;
+  
+}
+
+.pt-page-ontop {
+	z-index: 999;
+}
+/* Animation for page Transistion */
+.pt-page-scaleDown {
+	animation: scaleDown .7s ease both;
+}
+.pt-page-scaleUp {
+	animation: scaleUp 1.2s ease both;
+}
+.pt-page-MoveUp {
+	animation: MoveUp 1s ease both;
+}
+.pt-page-MoveDown{
+  position: absolute; 
+  top: 0;
+  left: 0; 
+  display: block;
+  animation: MoveDown 1s ease both;
+}
+@keyframes scaleDown {
+	to { opacity: 0; transform: scale(.8); }
+}
+@keyframes scaleUp {
+	from { opacity: 0; transform: scale(0.5); }
+}
+@keyframes MoveUp {
+	from { opacity: 0; transform:translateY(50%); }
+}
+@keyframes MoveDown{
+  0%{
+    opacity: 1; transform: scale(1); 
   }
-  to {
-    transform: rotate(360deg);
+  100%{
+    opacity: 0; transform: scale(0.7); visibility: hidden;
   }
+}
+.SearchBox{
+  width: 45%;
+  padding: 10px;
+  margin-left: 30%;
+  
+}
+.SearchBox input{
+  border: none;
+  background-color: rgba(255, 255, 255, 0.493);
+  width: 70%;
+  display: inline-block;
+  height: 50px;
+  border-radius: 50px;
+  padding: 5px;
+  padding-left: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: lighter;
+  font-size: 15px;
+}
+.SearchBox input:hover{
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.678);
+  transition-duration: 0.6s;
+
+}
+
+.SearchBox button{
+  display: inline-block;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: lighter;
+  font-size: 15px;
+  border: none;
+  background-color: rgba(207, 2, 2, 0.534);
+  border-radius: 50px;
+  width: 20%;
+  margin-left: 20px;
+  height: 50px;
+}
+.SearchBox button:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: rgba(207, 2, 2, 0.801);
+  transition-duration: 0.6s;
+
+}
+.SuggestionMovie{
+  background-color: rgba(214, 214, 214, 0.082);
+  min-height: 20px;
+  border-radius: 20px;
+  width: 70%;
+  padding: 5px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: lighter;
+  font-size: 20px;
+
+}
+.SuggestionMovie .movieSug h5{
+  margin: 0px;
+  color: white;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+.SuggestionMovie .movieSug {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.534);
+  padding: 5px;
+  width: 95%;
+}
+.SuggestionMovie .movieSug:hover{
+
+  transition-duration: 0.6s;
+  cursor: pointer;
+  transform: scale(1.04);
+  color: rgb(95, 95, 95) !important;
+}
+
+.SuggestionMovie small{
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.849);
+}
+.SuggestionMovie .errorText{
+  color: rgb(165, 7, 7);
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+/* All movies Div when user click search */
+.AllMovies{
+  background-color: rgba(32, 32, 32, 0.637);
+  position: absolute;
+  top: 15%;
+  left: 80%;
+  width: 100%;
+  padding: 40px;
+  display: none;
+}
+.AllMovies div{
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 30px;
+  margin-bottom: 25px;
+  color: white;
+
+}
+.AllMovies div img{
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+  width:200px;
+}
+.AllMovies h4{
+  margin: 0px;
+}  
+
+.AllMovies div:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+.AllMovies .closeBtn{
+  display: block;
+  margin-left: 85%;
+  margin-bottom: 40px;
+}
+
+.movies-MoveLeft{
+  animation: MoveLeft 1s ease both;
+  display: block;
+ 
+}
+.movies-MoveRight{
+  animation: MoveRight 1s ease both;
+
+}
+@keyframes MoveLeft {
+  
+	to { opacity: 1; left:2%; background-color: rgba(17, 17, 17, 0.705);}
+}
+
+@keyframes MoveRight{
+	to { opacity: 0.5; left:100%;}
 }
