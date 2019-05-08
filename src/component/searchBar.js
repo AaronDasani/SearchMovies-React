@@ -12,7 +12,7 @@ export default class searchBar extends Component {
 
     onChange=(event)=>{
         if(event.target.value.length>4){
-            axios.get(`http://www.omdbapi.com/?apikey=c0370b2d&plot=short&s=${event.target.value}`)
+            axios.get(`http://www.omdbapi.com/?apikey=[API_KEYS]&plot=short&s=${event.target.value}`)
                 .then((response)=>{
                     console.log(response);
                     this.setState(state=>{
